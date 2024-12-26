@@ -54,7 +54,7 @@ export default function AuthPage() {
         // }
 
       });
-      router.push("/")
+      router.push("/dash")
     }
   }, [key, setCookie, cookies, router, inviteCode, getCurrentUser, setAccount, setUserRoles, setUser]);
 

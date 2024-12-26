@@ -32,6 +32,7 @@ function useRequest() {
     // Set up request headers with "Kreative-Id-Key"
     const headers: HeadersInit = {
       "Kreative-Id-Key": key,
+      "Access-Control-Allow-Origin": "*",
     };
 
     // Include 'Content-Type' if body is provided and is an object
@@ -43,6 +44,7 @@ function useRequest() {
     const options: RequestInit = {
       method,
       headers,
+      credentials: "include",
     };
 
     // Include the body if provided
@@ -55,6 +57,8 @@ function useRequest() {
     }
 
     try {
+      console.log(url)
+      console.log(options)
       const response = await fetch(url, options);
 
       if (!response.ok) {

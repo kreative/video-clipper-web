@@ -22,23 +22,23 @@ module.exports = {
     },
     extend: {
       screens: {
-        "xs": "390px",
+        xs: "390px",
         "2xl": "1400px",
       },
       typography: {
-      DEFAULT: {
-        css: {
-          p: {
-            "margin-top": "0.25em",
-            "margin-bottom": "0.25em",
-            "line-height": "1.5",
+        DEFAULT: {
+          css: {
+            p: {
+              "margin-top": "0.25em",
+              "margin-bottom": "0.25em",
+              "line-height": "1.5",
+            },
           },
-        }
-      }
-    },
+        },
+      },
       colors: {
-        "brand-primary": "#076448",
-        "brand-secondary": "#086268",
+        "brand-primary": "#882CC9",
+        "brand-secondary": "#682CC9",
         "neutrals-1": "#ffffff",
         "neutrals-2": "#FAFAFA",
         "neutrals-3": "#f6f6f6",
@@ -104,28 +104,32 @@ module.exports = {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
-        shake : {
-          '10%, 90%': {
-            transform: 'translate3d(-1px, 0, 0)'
+        shake: {
+          "10%, 90%": {
+            transform: "translate3d(-1px, 0, 0)",
           },
-          '20%, 80%' : {
-            transform: 'translate3d(2px, 0, 0)'
+          "20%, 80%": {
+            transform: "translate3d(2px, 0, 0)",
           },
-          '30%, 50%, 70%': {
-            transform: 'translate3d(-4px, 0, 0)'
+          "30%, 50%, 70%": {
+            transform: "translate3d(-4px, 0, 0)",
           },
-          '40%, 60%': {
-            transform: 'translate3d(4px, 0, 0)'
-          }
-        }
+          "40%, 60%": {
+            transform: "translate3d(4px, 0, 0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-out": "fadeOut 0.5s ease-in-out",
-        "shake": 'shake 0.82s cubic-bezier(.36,.07,.19,.97) both',
+        shake: "shake 0.82s cubic-bezier(.36,.07,.19,.97) both",
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'), require("tailwindcss-animate"), require("tailwindcss-animation-delay")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate"),
+    require("tailwindcss-animation-delay"),
+  ],
 };

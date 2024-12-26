@@ -11,7 +11,7 @@ function useUsers() {
   // ! registered with the app, i.e. pre-onboarding), the method will still return 200.
 
   const getCurrentUser = async (): Promise<ICurrentUser> => {
-    return makeRequest("GET", API + "/api/veterinarians/me");
+    return await makeRequest("GET", API + "/users");
   };
 
   return { getCurrentUser };
