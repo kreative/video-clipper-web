@@ -1,5 +1,4 @@
 import { useState } from "react";
-import  from "@/components/Authenticate";
 import VerticalSteps from "@/components/offboarding/VerticalSteps";
 import Navbar from "@/components/NavbarSimple";
 import OffboardingSurvey from "@/components/offboarding/Survey";
