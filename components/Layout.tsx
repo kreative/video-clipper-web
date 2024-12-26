@@ -6,20 +6,20 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      if (url) {
-        // @ts-ignore
-        global.analytics.page(url);
-      }
-    };
+  // useEffect(() => {
+  //   const handleRouteChange = (url: string) => {
+  //     if (url) {
+  //       // @ts-ignore
+  //       global.analytics.page(url);
+  //     }
+  //   };
 
-    Router.events.on("routeChangeComplete", handleRouteChange);
+  //   Router.events.on("routeChangeComplete", handleRouteChange);
 
-    return () => {
-      Router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, []);
+  //   return () => {
+  //     Router.events.off("routeChangeComplete", handleRouteChange);
+  //   };
+  // }, []);
 
   return <div>{props.children}</div>;
 }

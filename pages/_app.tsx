@@ -1,16 +1,13 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { DevTools } from "jotai-devtools";
-import Script from "next/script";
 import localFont from "next/font/local";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "@/components/ui/toaster";
-import * as snippet from "@segment/snippet";
 import NextAdapterPages from "next-query-params/pages";
 import { QueryParamProvider } from "use-query-params";
 import Layout from "@/components/Layout";
-import { VercelToolbar } from "@vercel/toolbar/next";
 
 const queryClient = new QueryClient();
 
@@ -110,19 +107,6 @@ const satoshi = localFont({
   variable: "--font-satoshi",
 });
 
-function renderSnippet() {
-  const opts = {
-    apiKey: process.env.NEXT_PUBLIC_ANALYTICS_WRITE_KEY!,
-    page: false,
-  };
-
-  if (process.env.NEXT_PUBLIC_ENV === "development") {
-    return snippet.max(opts);
-  }
-
-  return snippet.min(opts);
-}
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div>
@@ -134,12 +118,7 @@ export default function App({ Component, pageProps }: AppProps) {
             }
           `}</style>
           <Layout>
-            <Script
-              id="segment-script"
-              dangerouslySetInnerHTML={{ __html: renderSnippet() }}
-            />
             <Component {...pageProps} />
-            {process.env.NEXT_PUBLIC_ENV === "staging" && <VercelToolbar />}
           </Layout>
           <ReactQueryDevtools initialIsOpen={false} />
           <DevTools />
