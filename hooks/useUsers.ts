@@ -14,7 +14,15 @@ function useUsers() {
     return await makeRequest("GET", API + "/users");
   };
 
-  return { getCurrentUser };
+  const addVideoForUser = async (yt_link: string): Promise<any> => {
+    return await makeRequest("POST", API + "/users/video", { yt_link });
+  };
+
+  const getVideosForUser = async (): Promise<any> => {
+    return await makeRequest("GET", API + "/users/videos");
+  };
+
+  return { getCurrentUser, addVideoForUser, getVideosForUser };
 }
 
 export default useUsers;
