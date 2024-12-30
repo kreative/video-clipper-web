@@ -10,9 +10,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import {
-  Microphone,
+  Video,
   GearSix,
   ArrowUpRight,
+  MonitorArrowUp,
 } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import useLogout from "@/hooks/useLogout";
@@ -30,6 +31,7 @@ import {
   PROFILE_URL,
   SETTINGS_URL,
 } from "@/lib/constants";
+import AddVideoButton from "@/components/AddVideoButton";
 
 interface NavbarProps {
   activeLink: string;
@@ -84,7 +86,7 @@ export default function Navbar(props: NavbarProps): JSX.Element {
         <nav
           className={cn(
             "flex w-[100%] items-center justify-between p-4",
-            colorChange ? "backdrop-blur-lg border-b border-black/5" : ""
+            colorChange ? "backdrop-blur-lg border-b border-black/5" : "",
           )}
         >
           <Link href={APP_INDEX}>
@@ -115,8 +117,8 @@ export default function Navbar(props: NavbarProps): JSX.Element {
                       : "transition-opacity duration-300 opacity-[50%] hover:opacity-[75%]")
                   }
                 >
-                  <Microphone weight="bold" className="h-auto w-6 sm:w-5" />
-                  <p className="hidden text-sm font-medium sm:block">Home</p>
+                  <Video weight="bold" className="h-auto w-6 sm:w-5" />
+                  <p className="hidden text-sm font-medium sm:block">Videos</p>
                 </Link>
                 <Link
                   href={SETTINGS_URL}
@@ -135,19 +137,21 @@ export default function Navbar(props: NavbarProps): JSX.Element {
               </div>
             </div>
             <div className="flex items-center justify-end space-x-2">
-              <Button
-                size={"sm"}
-                variant="default"
-                className="transition-colors text-xs h-6 rounded-full flex items-center justify-center bg-neutrals-13 hover:bg-neutrals-11"
-                animated
-              >
-                <Microphone
-                  weight="bold"
-                  size={12}
-                  className="mr-0 sm:mr-1.5 text-white"
-                />
-                <span className="hidden sm:block">Action Button</span>
-              </Button>
+              <AddVideoButton>
+                <Button
+                  size={"sm"}
+                  variant="default"
+                  className="transition-colors text-xs h-6 rounded-full flex items-center justify-center bg-neutrals-13 hover:bg-neutrals-11"
+                  animated
+                >
+                  <MonitorArrowUp
+                    weight="bold"
+                    size={12}
+                    className="mr-0 sm:mr-1.5 text-white"
+                  />
+                  <span className="hidden sm:block">Add video link</span>
+                </Button>
+              </AddVideoButton>
               <Popover>
                 <PopoverTrigger>
                   <motion.div
