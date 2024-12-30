@@ -15,7 +15,6 @@ import {
   ArrowUpRight,
   MonitorArrowUp,
 } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/ui/button";
 import useLogout from "@/hooks/useLogout";
 import { TypographicLogo } from "@/components/svgs/logos/TypographicLogo";
 import { Iconologo } from "@/components/svgs/logos/Iconologo";
@@ -137,21 +136,7 @@ export default function Navbar(props: NavbarProps): JSX.Element {
               </div>
             </div>
             <div className="flex items-center justify-end space-x-2">
-              <AddVideoButton>
-                <Button
-                  size={"sm"}
-                  variant="default"
-                  className="transition-colors text-xs h-6 rounded-full flex items-center justify-center bg-neutrals-13 hover:bg-neutrals-11"
-                  animated
-                >
-                  <MonitorArrowUp
-                    weight="bold"
-                    size={12}
-                    className="mr-0 sm:mr-1.5 text-white"
-                  />
-                  <span className="hidden sm:block">Add video link</span>
-                </Button>
-              </AddVideoButton>
+              <AddVideoButton />
               <Popover>
                 <PopoverTrigger>
                   <motion.div
