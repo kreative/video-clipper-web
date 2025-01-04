@@ -10,11 +10,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import useUsers from "@/hooks/useUsers";
+import { useQueryClient } from "@tanstack/react-query";
+import { useToast } from "./ui/use-toast";
 
 export default function AddVideoButton() {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [videoLink, setVideoLink] = useState("");
   const { addVideoForUser } = useUsers();
+  const queryClient = useQueryClient();
+  const { toast } = useToast();
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -43,7 +48,7 @@ export default function AddVideoButton() {
             animated={true}
             className="w-full"
             onClick={async () => {
-              console.log(videoLink);
+              setLoading(true);
 
               // validate that it is a valid video link
 
@@ -51,11 +56,21 @@ export default function AddVideoButton() {
               const response = await addVideoForUser(videoLink);
 
               // invalidate a query for the user's videos
+              await queryClient.invalidateQueries({ queryKey: ["videos"] });
+
               // close the dialog
+              setOpen(false);
+
               // show a success toast
+              toast({
+                title: "Video clipped",
+                description: "Your video is being processed now.",
+              });
+
+              setLoading(false);
             }}
           >
-            Clip video
+            {loading ? "Clipping..." : "Clip video"}
           </Button>
         </DialogFooter>
       </DialogContent>
