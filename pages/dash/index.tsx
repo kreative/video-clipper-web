@@ -9,12 +9,20 @@ import { columns } from "@/components/videos/columns";
 export default function Home() {
   const { getVideosForUser } = useUsers();
 
+  const queryOptions = {
+    staleTime: 1000 * 60 * 2,
+    cacheTime: 1000 * 60 * 5,
+  };
+
   const { data, isSuccess, isLoading } = useQuery({
     queryKey: ["videos"],
     queryFn: async () => {
       return await getVideosForUser();
     },
+    refetchInterval: 1000 * 60 * 1,
+    ...queryOptions,
   });
+
 
   return (
     <div>

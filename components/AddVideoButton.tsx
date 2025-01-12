@@ -67,6 +67,7 @@ export default function AddVideoButton() {
                 description: "Your video is being processed now.",
               });
 
+              setVideoLink("");
               setLoading(false);
             }}
           >
