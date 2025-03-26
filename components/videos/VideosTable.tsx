@@ -146,7 +146,6 @@ export function VideosTable<TData, TValue>({
     const behavior = "append";
 
     saveToObsidian(fileContent, noteName, path, vault, behavior);
-
   }
 
   return (
@@ -245,7 +244,9 @@ export function VideosTable<TData, TValue>({
           </ScrollArea>
           <Button
             onClick={() => {
-              saveAndOpenInObsidian(getContentInTemplate(video) || "", video);
+              if (video) {
+                saveAndOpenInObsidian(getContentInTemplate(video) || "", video);
+              }
             }}
           >
             Add to Obsidian
