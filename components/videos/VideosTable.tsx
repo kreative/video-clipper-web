@@ -178,7 +178,7 @@ export function VideosTable<TData, TValue>({
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
-                    onClick={() => handleRowClick(row.original)}
+                    onClick={() => handleRowClick(row.original as IVideo)}
                     className="cursor-pointer"
                   >
                     {row.getVisibleCells().map((cell) => (
