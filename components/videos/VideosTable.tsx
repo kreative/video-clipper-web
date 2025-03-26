@@ -46,7 +46,7 @@ export function VideosTable<TData, TValue>({
     setOpen(true);
   }
 
-  function getContentInTemplate(video?: IVideo) {
+  function getContentInTemplate(video?: IVideo | null | undefined) {
     if (!video) {
       return "";
     }
