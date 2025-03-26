@@ -57,12 +57,13 @@ export function VideosTable<TData, TValue>({
       return video.prompt_response;
     }
 
-    const keys = Object.keys(video);
+    const keys: string[] = Object.keys(video);
 
     let content = template;
-
-    keys.forEach((key) => {
-      content = content.replace(`{{${key}}}`, video[key]);
+    keys.forEach((key: string) => {
+      if (key in video) {
+        content = content.replace(`{{${key}}}`, video[key as keyof IVideo]);
+      }
     });
 
     return content;
